@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lab_5/DataClass.dart';
+import 'package:flutter_lab_5/ProviderClass.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() 
+{
   runApp
   (
 
@@ -29,7 +30,7 @@ class MainApp extends StatelessWidget
     // );
     return ChangeNotifierProvider
     (
-      create: (context) => DataClass(),
+      create: (context) => ProviderClass(),
       child: MaterialApp
       (
         title: 'Provider Class',

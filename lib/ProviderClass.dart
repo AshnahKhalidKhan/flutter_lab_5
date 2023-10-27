@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_lab_5/product_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 Future<List<Products>> fetchingData() async
 {
@@ -27,12 +28,12 @@ Future<List<Products>> fetchingData() async
 //For changing state in class, you will use ChangeNotifier
 //ChangeNotifier tells ONLY the widgets that are listening to it, that it has changed
 
-class DataClass extends ChangeNotifier //this is our provider class
+class ProviderClass extends ChangeNotifier //this is our provider class
 {
   List<Products>? post;
   bool loading = false;
 
-  getData() async
+  getDataFromAPI() async
   {
     loading = true; //we are fetching data
     post = (await fetchingData());
@@ -54,6 +55,8 @@ class _MidtermExamState extends State<MidtermExam>
   @override
   void initState() 
   {
+    // final postModel = Provider
+    Provider.of<ProviderClass>(context, listen: false).getDataFromAPI();
     super.initState();
   }
 
