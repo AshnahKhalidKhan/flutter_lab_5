@@ -94,9 +94,40 @@ class _MidtermExamState extends State<MidtermExam>
     // )
     // :
     // CircularProgressIndicator();
+    // while (postModel.loading) 
+    // {
+    //   return CircularProgressIndicator();
+    // }
+    // return Scaffold
+    // (
+    //   appBar: AppBar
+    //   (
+    //     backgroundColor: Colors.white,
+    //     title: Text('Products', style: TextStyle(color: Colors.black),),
+    //     centerTitle: true,
+    //   ),
+    //   body: Padding
+    //   (
+    //     padding: EdgeInsets.all(5.0),
+    //     child: futureBuilding(),
+    //   )
+    // );
     while (postModel.loading) 
     {
-      return CircularProgressIndicator();
+      return Scaffold
+      (
+        appBar: AppBar
+        (
+          backgroundColor: Colors.white,
+          title: Text('Products', style: TextStyle(color: Colors.black),),
+          centerTitle: true,
+        ),
+        body: Padding
+        (
+          padding: EdgeInsets.all(5.0),
+          child: CircularProgressIndicator(),
+        )
+      );
     }
     return Scaffold
     (
