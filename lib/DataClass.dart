@@ -52,6 +52,11 @@ class MidtermExam extends StatefulWidget
 class _MidtermExamState extends State<MidtermExam>
 {
   @override
+  void initState() 
+  {
+    super.initState();
+  }
+
   Widget build(BuildContext context) 
   {
     return Scaffold
