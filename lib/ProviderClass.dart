@@ -38,7 +38,7 @@ class ProviderClass extends ChangeNotifier //this is our provider class
     loading = true; //we are fetching data
     post = (await fetchingData());
     loading = false; //we have fetched data
-    notifyListeners();
+    //notifyListeners();
   }
 }
 
@@ -122,10 +122,17 @@ class _MidtermExamState extends State<MidtermExam>
           title: Text('Products', style: TextStyle(color: Colors.black),),
           centerTitle: true,
         ),
-        body: Padding
+        body: Center
         (
-          padding: EdgeInsets.all(5.0),
-          child: CircularProgressIndicator(),
+          child: Column
+          (
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: 
+            [
+              Text('Loading...'),
+              CircularProgressIndicator(),
+            ],
+          ),
         )
       );
     }
