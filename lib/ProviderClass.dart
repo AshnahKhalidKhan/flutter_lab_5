@@ -38,7 +38,7 @@ class ProviderClass extends ChangeNotifier //this is our provider class
     loading = true; //we are fetching data
     post = (await fetchingData());
     loading = false; //we have fetched data
-    //notifyListeners();
+    notifyListeners();
   }
 }
 
@@ -147,23 +147,28 @@ class _MidtermExamState extends State<MidtermExam>
       body: Padding
       (
         padding: EdgeInsets.all(5.0),
-        child: futureBuilding(),
+        child: futureBuilding(postModel.post),
       )
     );
   }
 
-  FutureBuilder<List<Products>> futureBuilding() 
+  FutureBuilder<List<Products>> futureBuilding(List<Products>? post) 
   {
     return FutureBuilder
     (
-      future: fetchingData(), 
+      // future: fetchingData(), 
+      future: null, 
       builder: (context, snapshot)
       {
-        if (snapshot.hasData)
+        // if (snapshot.hasData)
+        // {
+        //   return _buildingView(snapshot.data!);
+        // }
+        if (post != null)
         {
-          return _buildingView(snapshot.data!);
+          return _buildingView(post);
         }
-        if (snapshot.hasData)
+        else if (snapshot.hasError)
         {
           return Text('$snapshot.error');
         }
