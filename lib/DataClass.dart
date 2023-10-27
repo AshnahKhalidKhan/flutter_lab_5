@@ -4,21 +4,7 @@ import 'package:flutter_lab_5/product_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
-class DataClass extends ChangeNotifier
-{
-  List<Products>? post;
-  bool loading = false;
-
-  getData() async
-  {
-    loading = true;
-    post = (await _fetchingData());
-    loading = false;
-    notifyListeners();
-  }
-}
-
-Future<List<Products>> _fetchingData() async
+Future<List<Products>> fetchingData() async
 {
   final respnse = await http.get(Uri.parse('https://dummyjson.com/products'));
   if (respnse.statusCode == 200)
@@ -35,4 +21,23 @@ Future<List<Products>> _fetchingData() async
     throw Exception('Erorrr');
   }
 }
+
+//API calling is business logic, not frontend logic
+//setState is only available in stateful widget
+//For changing state in class, you will use ChangeNotifier
+
+class DataClass extends ChangeNotifier //this is our provider class
+{
+  List<Products>? post;
+  bool loading = false;
+
+  getData() async
+  {
+    loading = true; //we are fetching data
+    post = (await fetchingData());
+    loading = false; //we have fetched data
+    notifyListeners();
+  }
+}
+
 
