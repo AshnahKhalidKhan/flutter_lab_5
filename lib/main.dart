@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lab_5/DataClass.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp
+  (
+
+    const MainApp()
+  );
 }
 
 class MainApp extends StatelessWidget 
@@ -11,14 +17,28 @@ class MainApp extends StatelessWidget
   @override
   Widget build(BuildContext context) 
   {
-    return const MaterialApp
+    // return const MaterialApp
+    // (
+    //   home: Scaffold
+    //   (
+    //     body: Center
+    //     (
+    //       child: Text('Hello World!'),
+    //     ),
+    //   ),
+    // );
+    return ChangeNotifierProvider
     (
-      home: Scaffold
+      create: (context) => DataClass(),
+      child: MaterialApp
       (
-        body: Center
+        title: 'Provider Class',
+        theme: ThemeData
         (
-          child: Text('Hello World!'),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyanAccent),
+          useMaterial3: true,
         ),
+        home: const MidtermExam(),
       ),
     );
   }
