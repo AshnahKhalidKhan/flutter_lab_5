@@ -65,29 +65,34 @@ class _MidtermExamState extends State<MidtermExam>
       body: Padding
       (
         padding: EdgeInsets.all(5.0),
-        child: FutureBuilder
-        (
-          future: fetchingData(), 
-          builder: (context, snapshot)
-          {
-            if (snapshot.hasData)
-            {
-              return _buildingView(snapshot.data!);
-            }
-            if (snapshot.hasData)
-            {
-              return Text('$snapshot.error');
-            }
-            else
-            {
-              return Center
-              (
-                child: CircularProgressIndicator(),
-              );
-            }
-          }
-        ),
+        child: futureBuilding(),
       )
+    );
+  }
+
+  FutureBuilder<List<Products>> futureBuilding() 
+  {
+    return FutureBuilder
+    (
+      future: fetchingData(), 
+      builder: (context, snapshot)
+      {
+        if (snapshot.hasData)
+        {
+          return _buildingView(snapshot.data!);
+        }
+        if (snapshot.hasData)
+        {
+          return Text('$snapshot.error');
+        }
+        else
+        {
+          return Center
+          (
+            child: CircularProgressIndicator(),
+          );
+        }
+      }
     );
   }
 }
