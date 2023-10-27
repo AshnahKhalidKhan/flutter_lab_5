@@ -62,6 +62,42 @@ class _MidtermExamState extends State<MidtermExam>
 
   Widget build(BuildContext context) 
   {
+    final postModel = Provider.of<ProviderClass>(context);
+    // return Scaffold
+    // (
+    //   appBar: AppBar
+    //   (
+    //     backgroundColor: Colors.white,
+    //     title: Text('Products', style: TextStyle(color: Colors.black),),
+    //     centerTitle: true,
+    //   ),
+    //   body: Padding
+    //   (
+    //     padding: EdgeInsets.all(5.0),
+    //     child: futureBuilding(),
+    //   )
+    // );
+    // return postModel.loading ? 
+    // Scaffold
+    // (
+    //   appBar: AppBar
+    //   (
+    //     backgroundColor: Colors.white,
+    //     title: Text('Products', style: TextStyle(color: Colors.black),),
+    //     centerTitle: true,
+    //   ),
+    //   body: Padding
+    //   (
+    //     padding: EdgeInsets.all(5.0),
+    //     child: futureBuilding(),
+    //   )
+    // )
+    // :
+    // CircularProgressIndicator();
+    while (postModel.loading) 
+    {
+      return CircularProgressIndicator();
+    }
     return Scaffold
     (
       appBar: AppBar
